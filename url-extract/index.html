@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>UNDER CONSTRUCTION</title>
+	<meta charset="utf-8" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 	<style>
 		body {
 			background-image: -webkit-gradient(radial, center center, 0, center center, 212, from(#949494), to(#0a0a0a));
@@ -25,8 +25,18 @@
 			color: #ffffff;
 		}
 	</style>
+	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+	<script>
+		(function() {
+			var lang = (navigator.language || navigator.userLanguage).toLowerCase();
+			lang = lang || 'en';
+			if (lang !== 'en') {
+				location.replace(location.href.replace(/.html$/, '-zh-cn.html'));
+			}
+		})();
+	</script>
 </head>
 <body>
 <div class="container">
