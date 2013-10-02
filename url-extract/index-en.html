@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>url-exract</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<style>
+		@media screen and (min-width: 768px) {
+			h1 {
+				font-size: 100px;
+			}
+		}
+		#content {
+			padding-top: 100px;
+		}
+		.footer {
+			padding-top: 40px;
+			padding-bottom: 30px;
+			margin-top: 100px;
+			color: #777;
+			text-align: center;
+			border-top: 1px solid #e5e5e5;
+		}
+	</style>
+	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a href="./" class="navbar-brand">url-extract</a>
+		</div>
+		<nav class="collapse navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li>
+				<a href="./documentation-en.html">Documentation</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract">Github</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract/issues">Issues</a>
+				</li>
+				<li>
+				<a href="./index-zh-cn.html">Chinese</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<main id="content" role="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>url-extract</h1>
+				<p class="text-muted">A website snapshot & extract url library in NodeJS</p>
+				<div class="page-header">
+					<h2>Quick Start</h2>
+    			</div>
+				<h3>Dependence</h3>
+				<p>
+					Make sure PhantomJS is installed. This module expects the phantomjs binary to be in PATH somewhere and must be greater than 1.9.0. In other words, type this:
+				</p>
+				<blockquote>$ phantomjs -v</blockquote>
+				<p>If it print 1.9.x, you can do next.</p>
+				<h3>Setup</h3>
+				<blockquote>$ npm install url-extract</blockquote>
+				<h3>Extract</h3>
+				<pre>
+// Initialization
+var ue = require('url-extract')();
+// Extract http://www.google.com information and take a snapshot
+ue.extract('http://www.google.com', function (job) {
+  console.log(job);
+});
+</pre>
+				<h3>Snapshot</h3>
+				<pre>
+// Initialization
+var ue = require('url-extract')();
+// Take a snapshot and save to ./snapshot/nodejs.png
+ue.snapshot('http://www.nodejs.org', './snaphost/nodejs.png');
+</pre>
+				<h3>More Examples</h3>
+				<li>
+					<a href="https://github.com/miniflycn/url-extract/tree/master/examples">Simple Examples</a>
+				</li>
+				<li>
+					<a href="https://github.com/miniflycn/url-extract-server-example">A Sever Example</a>
+				</li>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="footer" role="contentinfo">
+<div class="container">
+Copyright(c) 2013 Daniel Yang &lt;miniflycn#gamil.com&gt;
+</div>
+</footer>
+</body>
+</html>

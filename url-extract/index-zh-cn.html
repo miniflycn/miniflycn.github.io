@@ -1,49 +1,108 @@
 <html>
 <head>
-	<title>UNDER CONSTRUCTION</title>
+	<title>url-extract</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<style>
-		body {
-			background-image: -webkit-gradient(radial, center center, 0, center center, 212, from(#949494), to(#0a0a0a));
-			background-image: -webkit-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -moz-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -o-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -ms-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: radial-gradient(center center, cover, #949494, #0a0a0a);
+		@media screen and (min-width: 768px) {
+			h1 {
+				font-size: 100px;
+			}
 		}
-		.row {
-			height: 100%;
+		#content {
+			padding-top: 100px;
 		}
-		.set-middle {
-			margin: 20px auto 0;
-		}
-		.text-yellow {
-			color: #f8c50a;
-		}
-		.text-white {
-			color: #ffffff;
+		.footer {
+			padding-top: 40px;
+			padding-bottom: 30px;
+			margin-top: 100px;
+			color: #777;
+			text-align: center;
+			border-top: 1px solid #e5e5e5;
 		}
 	</style>
-	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<img src="./cup.png" class="img-responsive set-middle"/>
-			<h1 class="text-center">
-				<span class="text-white">正在</span> 
-				<span class="text-yellow">建设中……</span>
-			</h1>
-			<h4 class="text-center text-yellow">不好意思，该站点正在建设中</h4>
-			<h4 class="text-center text-white">请稍后再访问，谢谢^ ^</h4>
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a href="./" class="navbar-brand">url-extract</a>
 		</div>
-		<div class="col-md-3"></div>
+		<nav class="collapse navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li>
+				<a href="./documentation-zh-cn.html">文档</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract">Github</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract/issues">Issues</a>
+				</li>
+				<li>
+				<a href="./index-en.html">英文</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
+</header>
+<main id="content" role="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>url-extract</h1>
+				<p class="text-muted">一个NodeJS截图&页面信息抓取库</p>
+				<div class="page-header">
+					<h2>快速开始</h2>
+    			</div>
+				<h3>依赖</h3>
+				<p>
+					请确认PhantomJS已经安装，并且phantomjs二进制文件在环境变量PATH当中，并且其版本大于1.9.0。也就是说，在终端键入：
+				</p>
+				<blockquote>$ phantomjs -v</blockquote>
+				<p>如果打印1.9.x，那么请进行下一步。</p>
+				<h3>安装</h3>
+				<blockquote>$ npm install url-extract</blockquote>
+				<h3>页面信息抓取</h3>
+				<pre>
+// 初始化
+var ue = require('url-extract')();
+// 抓取 http://www.google.com 的信息并截图
+ue.extract('http://www.google.com', function (job) {
+  console.log(job);
+});
+</pre>
+				<h3>截图</h3>
+				<pre>
+// 初始化
+var ue = require('url-extract')();
+// 截图并保存在 ./snapshot/nodejs.png
+ue.snapshot('http://www.nodejs.org', './snaphost/nodejs.png');
+</pre>
+				<h3>更多例子</h3>
+				<li>
+					<a href="https://github.com/miniflycn/url-extract/tree/master/examples">简单例子</a>
+				</li>
+				<li>
+					<a href="https://github.com/miniflycn/url-extract-server-example">作为服务的例子</a>
+				</li>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="footer" role="contentinfo">
+<div class="container">
+Copyright(c) 2013 Daniel Yang &lt;miniflycn#gamil.com&gt;
 </div>
+</footer>
 </body>
 </html>
