@@ -62,8 +62,15 @@
 				<h1>url-extract</h1>
 				<p class="text-muted">一个NodeJS截图&页面信息抓取库</p>
 				<div class="page-header">
+					<h2>为什么需要url-extract？</h2>
+				</div>
+				<p>利用PhantomJS对一个网页进行截图一般需要开辟一个新的PhantomJS进程。那么如果是对多个网页进行截图呢？开辟多个PhantomJS进程？这或许不是一个好办法，开辟过多进程会导致CPU在各进程中频繁切换，最终导致截图效率下降。只开辟单个进程？这也不是一个好方法，这样CPU没有被充分利用。</p>
+				<p>url-extract正是为了解决大量截图操作效率问题而出现的。</p>
+				<p>url-extract在初始化时创建多个PhantomJS进程，通过WebSocket将截图任务分派到各个PhantomJS进程进行处理，任务做完后再通过标准输出回传数据。</p>
+				<p>所以，如果你的应用可能会产生大量截图操作，那么url-extract或许是个好选择。</p>
+				<div class="page-header">
 					<h2>快速开始</h2>
-    			</div>
+				</div>
 				<h3>依赖</h3>
 				<p>
 					请确认PhantomJS已经安装，并且phantomjs二进制文件在环境变量PATH当中，并且其版本大于1.9.0。也就是说，在终端键入：
@@ -87,6 +94,15 @@ ue.extract('http://www.google.com', function (job) {
 var ue = require('url-extract')();
 // 截图并保存在 ./snapshot/nodejs.png
 ue.snapshot('http://www.nodejs.org', './snaphost/nodejs.png');
+</pre>
+				<h3>截图并回调</h3>
+				<pre>
+// 初始化
+var ue = require('url-extract')();
+// 截图
+ue.snapshot('http://www.nodejs.org', function (job) {
+	// 这时候截图已生成
+});
 </pre>
 				<h3>更多例子</h3>
 				<li>
