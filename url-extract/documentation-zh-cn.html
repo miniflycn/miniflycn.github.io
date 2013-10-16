@@ -1,49 +1,194 @@
+<!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+	<title>url-extract</title>
+=======
 	<title>正在建设中</title>
+>>>>>>> d65366629b66d5e7f3fd244069073188300eef84
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<style>
-		body {
-			background-image: -webkit-gradient(radial, center center, 0, center center, 212, from(#949494), to(#0a0a0a));
-			background-image: -webkit-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -moz-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -o-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: -ms-radial-gradient(center center, cover, #949494, #0a0a0a);
-			background-image: radial-gradient(center center, cover, #949494, #0a0a0a);
+		.active > a {
+			font-weight: bold;
+			color: #563d7c;
+			background-color: transparent;
+			border-right: 1px solid #563d7c;
 		}
-		.row {
-			height: 100%;
+		#content {
+			padding-top: 100px;
 		}
-		.set-middle {
-			margin: 20px auto 0;
-		}
-		.text-yellow {
-			color: #f8c50a;
-		}
-		.text-white {
-			color: #ffffff;
+		.footer {
+			padding-top: 40px;
+			padding-bottom: 30px;
+			margin-top: 100px;
+			color: #777;
+			text-align: center;
+			border-top: 1px solid #e5e5e5;
 		}
 	</style>
-	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">-->
+	<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<img src="./cup.png" class="img-responsive set-middle"/>
-			<h1 class="text-center">
-				<span class="text-white">正在</span> 
-				<span class="text-yellow">建设中……</span>
-			</h1>
-			<h4 class="text-center text-yellow">不好意思，该站点正在建设中</h4>
-			<h4 class="text-center text-white">请稍后再访问，谢谢^ ^</h4>
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a href="./" class="navbar-brand">url-extract</a>
 		</div>
-		<div class="col-md-3"></div>
+		<nav class="collapse navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li>
+				<a href="./documentation-zh-cn.html">文档</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract">Github</a>
+				</li>
+				<li>
+				<a href="http://github.com/miniflycn/url-extract/issues">Issues</a>
+				</li>
+				<li>
+				<a href="./index-en.html">英文</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
+</header>
+<main id="content" role="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div id="sidebar" class="affix" role="complementary">
+					<ul class="nav">
+						<li class=""><a href="#setup">安装</a></li>
+						<li class=""><a href="#sample">简单例子</a></li>
+						<li class=""><a href="#init">初始化</a></li>
+            		</ul>
+				</div>
+			</div>
+			<div class="col-md-9" id="doc-container">
+				<h1 id="setup">安装</h1>
+				<p>首先请确认PhantomJS已经安装，并且<code>phantomjs</code>二进制文件在环境变量PATH当中，并且其版本大于<code>1.9.0</code>。也就是说，在终端键入：</p>
+				<blockquote>$ phantomjs -v</blockquote>
+				<p>如果打印1.9.x，则依赖正常，否则请到<a href="http://phantomjs.org">PhantomJS官网</a>下载最新版本并安装。</p>
+				<p>键入：</p>
+				<blockquote>$ npm install url-extract</blockquote>
+				<p>进行安装。</p>
+				<h1 id="sample">简单例子</h1>
+				<pre>// 初始化
+var ue = require('url-extract')();
+// 对 http://www.google.com 截图
+ue.snapshot('http://www.google.com', './snapshot/google.png');
+</pre>
+				<h1 id="init">初始化</h1>
+				<p>可以通过给模块传入参数进行初始化，如果没有传入参数，则使用默认配置进行初始化，默认配置如下：</p>
+				<pre>{
+  wsPort: 3001,
+  workerNum: 0,
+  cache: 'object',
+  maxJob: 100,
+  maxQueueJob: 0,
+  maxCache: 10000,
+  viewportSize: { 
+    width: 1024, 
+    height: 600 
+  },
+  clipRect: 0,
+  zoomFactor: 0
+}</pre>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>属性</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>wsPort</td>
+						<td>websocket使用的端口号，用于NodeJS和PhantomJS通讯</td>
+						</tr>
+						<tr>
+						<td>workerNum</td>
+						<td>PhantomJS worker的数量，0表示和CPU数量相同</td>
+						</tr>
+						<tr>
+						<td>cache</td>
+						<td>使用什么类型的Cache</td>
+						</tr>
+						<tr>
+						<td>maxJob</td>
+						<td>每个worker可以并发的最大job数量</td>
+						</tr>
+						<tr>
+						<td>maxQueueJob</td>
+						<td>可排队的job数量，0表示没有限制</td>
+						</tr>
+						<tr>
+						<td>maxCache</td>
+						<td>Cache记录的最大数量</td>
+						</tr>
+						<tr>
+						<td>viewportSize</td>
+						<td>PhantomJS可视区域大小</td>
+						</tr>
+						<tr>
+						<td>clipRect</td>
+						<td>PhantomJS截取区域，0表示截取整个页面</td>
+						</tr>
+						<tr>
+						<td>zoomFactor</td>
+						<td>放大倍数，0表示不进行缩放/td>
+						</tr>
+					</tbody>
+				</table>
+				<p>初始化例子如下：</p>
+				<pre>var ue = require('url-extract')({
+  clipRect: { top: 0, left: 0, width: 1024, height: 600 }
+});</pre>
+				<p><span class="label label-info">注意</span> url-extract模块必须初始化，而且只能初始化一次，再次运行该初始化函数，则会返回已经初始化过的对象，例如：</p>
+				<pre>var ue1 = require('url-extract')({
+      clipRect: { top: 0, left: 0, width: 1024, height: 600 }
+    })
+  , ue2 = require('url-extract')();
+ue1 === ue2; // true</pre>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="footer" role="contentinfo">
+<div class="container">
+Copyright(c) 2013 Daniel Yang &lt;miniflycn#justany.net&gt;<br />
+Copyright(c) 2013 Radica Systems Limited
 </div>
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script>
+!function ($) {
+	$(function () {
+		var $window = $(window);
+		var $body = $(document.body);
+
+		$body.scrollspy({
+			traget: '#sidebar',
+			offset: 120
+		});
+
+		console.log($body.data('bs.scrollspy'))
+
+		$window.on('load', function () {
+	    	$body.scrollspy('refresh');
+		});
+
+	});
+}(window.jQuery)
+</script>
 </body>
 </html>
