@@ -65,6 +65,8 @@
 						<li class=""><a href="#setup">安装</a></li>
 						<li class=""><a href="#sample">简单例子</a></li>
 						<li class=""><a href="#init">初始化</a></li>
+						<li class=""><a href="#class_job">Job类</a></li>
+						<li class=""><a href="#snapshot">.snapshot()</a></li>
             		</ul>
 				</div>
 			</div>
@@ -140,7 +142,7 @@ ue.snapshot('http://www.google.com', './snapshot/google.png');
 						</tr>
 						<tr>
 						<td>zoomFactor</td>
-						<td>放大倍数，0表示不进行缩放/td>
+						<td>放大倍数，0表示不进行缩放</td>
 						</tr>
 					</tbody>
 				</table>
@@ -154,6 +156,168 @@ ue.snapshot('http://www.google.com', './snapshot/google.png');
     })
   , ue2 = require('url-extract')();
 ue1 === ue2; // true</pre>
+				<h1 id="class_job">Job类</h1>
+				<p>Job类使用于记录每个快照或者抓取操作的相关信息的，并提供一些方法操作这些信息。</p>
+				<h3>属性</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>属性</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>id</td>
+						<td>身份标示</td>
+						</tr>
+						<tr>
+						<td>url</td>
+						<td>目标URL</td>
+						</tr>
+						<tr>
+						<td>content</td>
+						<td>是否需要抓取页面content，也就是区分是抓取操作，还是纯粹快照操作</td>
+						</tr>
+						<tr>
+						<td>cache</td>
+						<td>该job是否使用缓存</td>
+						</tr>
+						<tr>
+						<td>callback</td>
+						<td>job完成后的回调函数</td>
+						</tr>
+						<tr>
+						<td>image</td>
+						<td>图片地址</td>
+						</tr>
+						<tr>
+						<td>viewportSize</td>
+						<td>PhantomJS可视区域大小</td>
+						</tr>
+						<tr>
+						<td>clipRect</td>
+						<td>PhantomJS截取区域，0表示截取整个页面</td>
+						</tr>
+						<tr>
+						<td>zoomFactor</td>
+						<td>放大倍数，0表示不进行缩放</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>方法</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>方法</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>getData()</td>
+						<td>获取job的相关数据</td>
+						</tr>
+					</tbody>
+				</table>
+				<h1 id="snapshot">.snapshot()</h1>
+				<p>snapshot方法专门用于创建content为false的Job，并自动交给PhantomJS Worker处理。</p>
+				<p><b>.snapshot(url, [callback])</b></p>
+				<p><b>.snapshot(url, [image])</b></p>
+				<p><b>.snpashot(url, [option])</b></p>
+				<h3>参数</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>参数</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>url</td>
+						<td>操作的URL</td>
+						</tr>
+						<tr>
+						<td>image</td>
+						<td>指定截图的位置，默认根据./snapshot/#{workerId}/#{job.id}.png规则生成图像</td>
+						</tr>
+						<tr>
+						<td>callback</td>
+						<td>完成截图后的回调函数</td>
+						</tr>
+						<tr>
+						<td>option</td>
+						<td>为参数对象，除了可以包含image和callback两个参数外，还可以包含下面其他参数</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>其他参数</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>其他参数</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>id</td>
+						<td>指定job的id</td>
+						</tr>
+						<tr>
+						<td>ignoreCache</td>
+						<td>是否忽略缓存，默认false</td>
+						</tr>
+						<tr>
+						<td>viewportSize</td>
+						<td>PhantomJS可视区域大小</td>
+						</tr>
+						<tr>
+						<td>clipRect</td>
+						<td>PhantomJS截取区域，0表示截取整个页面</td>
+						</tr>
+						<tr>
+						<td>zoomFactor</td>
+						<td>放大倍数，0表示不进行缩放</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>返回</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>情况</th>
+						<th>返回</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>正常</td>
+						<td>Job对象</td>
+						</tr>
+						<tr>
+						<td>发生错误，或者正在排队的Job对象超出最大值</td>
+						<td>false</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>例子</h3>
+				<li>单纯对百度截图</li>
+				<pre>ue.snapshot('http://www.baidu.com');</pre>
+				<li>对百度截图并回调</li>
+				<pre>ue.snapshot('http://www.baidu.com', function (job) {
+  console.log(job);
+});</pre>
+				<li>对百度截图，并指定图片地址</li>
+				<pre>ue.snapshot('http://www.baidu.com', './snaphsot/baidu.png');</pre>
+				<li>对百度截图，指定图片地址，并回调</li>
+				<pre>ue.snapshot('http://www.baidu.com', {
+  image: './snapshot/baidu.png',
+  callback: function (job) {
+  	console.log(job);
+  }
+});</pre>
 			</div>
 		</div>
 	</div>
@@ -176,8 +340,6 @@ Copyright(c) 2013 Radica Systems Limited
 			traget: '#sidebar',
 			offset: 120
 		});
-
-		console.log($body.data('bs.scrollspy'))
 
 		$window.on('load', function () {
 	    	$body.scrollspy('refresh');
