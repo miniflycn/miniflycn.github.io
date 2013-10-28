@@ -67,6 +67,7 @@
 						<li class=""><a href="#init">初始化</a></li>
 						<li class=""><a href="#class_job">Job类</a></li>
 						<li class=""><a href="#snapshot">.snapshot()</a></li>
+						<li class=""><a href="#extract">.extract()</a></li>
             		</ul>
 				</div>
 			</div>
@@ -317,6 +318,92 @@ ue1 === ue2; // true</pre>
   callback: function (job) {
   	console.log(job);
   }
+});</pre>
+				<h1 id="extract">.extract()</h1>
+				<p>extract方法专门用于创建content为true的Job，并自动交给PhantomJS Worker处理。</p>
+				<p><b>.extract(url, callback)</b></p>
+				<p><b>.extract(url, option)</b></p>
+				<h3>参数</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>参数</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>url</td>
+						<td>操作的URL</td>
+						</tr>
+						<tr>
+						<td>callback</td>
+						<td>完成截图后的回调函数</td>
+						</tr>
+						<tr>
+						<td>option</td>
+						<td>为参数对象，除了可以包含image和callback两个参数外，还可以包含下面其他参数</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>其他参数</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>其他参数</th>
+						<th>意义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>id</td>
+						<td>指定job的id</td>
+						</tr>
+						<tr>
+						<td>ignoreCache</td>
+						<td>是否忽略缓存，默认false</td>
+						</tr>
+						<tr>
+						<td>image</td>
+						<td>指定截图的位置，默认根据./snapshot/#{workerId}/#{job.id}.png规则生成图像</td>
+						</tr>
+						<tr>
+						<td>viewportSize</td>
+						<td>PhantomJS可视区域大小</td>
+						</tr>
+						<tr>
+						<td>clipRect</td>
+						<td>PhantomJS截取区域，0表示截取整个页面</td>
+						</tr>
+						<tr>
+						<td>zoomFactor</td>
+						<td>放大倍数，0表示不进行缩放</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>返回</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						<th>情况</th>
+						<th>返回</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>正常</td>
+						<td>Job对象</td>
+						</tr>
+						<tr>
+						<td>发生错误，或者正在排队的Job对象超出最大值</td>
+						<td>false</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>例子</h3>
+				<li>对百度抓取并回调</li>
+				<pre>ue.extract('http://www.baidu.com', function (job) {
+  console.log(job);
 });</pre>
 			</div>
 		</div>
