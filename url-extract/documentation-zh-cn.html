@@ -23,6 +23,11 @@
 			text-align: center;
 			border-top: 1px solid #e5e5e5;
 		}
+		@media (max-width: 992px) {
+			.mobile-hide {
+				display: none;
+			}
+		}
 	</style>
 	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">-->
 	<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
@@ -60,7 +65,7 @@
 <main id="content" role="main">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3 mobile-hide">
 				<div id="sidebar" class="affix" role="complementary">
 					<ul class="nav">
 						<li class=""><a href="#setup">安装</a></li>
