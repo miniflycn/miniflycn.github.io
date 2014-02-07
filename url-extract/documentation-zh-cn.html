@@ -29,8 +29,6 @@
 			}
 		}
 	</style>
-	<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">-->
-	<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
@@ -96,10 +94,8 @@ ue.snapshot('http://www.google.com', './snapshot/google.png');
 				<pre>{
   wsPort: 3001,
   workerNum: 0,
-  cache: 'object',
   maxJob: 100,
   maxQueueJob: 0,
-  maxCache: 10000,
   viewportSize: { 
     width: 1024, 
     height: 600 
@@ -124,20 +120,12 @@ ue.snapshot('http://www.google.com', './snapshot/google.png');
 						<td>PhantomJS worker的数量，0表示和CPU数量相同</td>
 						</tr>
 						<tr>
-						<td>cache</td>
-						<td>使用什么类型的Cache</td>
-						</tr>
-						<tr>
 						<td>maxJob</td>
 						<td>每个worker可以并发的最大job数量</td>
 						</tr>
 						<tr>
 						<td>maxQueueJob</td>
 						<td>可排队的job数量，0表示没有限制</td>
-						</tr>
-						<tr>
-						<td>maxCache</td>
-						<td>Cache记录的最大数量</td>
 						</tr>
 						<tr>
 						<td>viewportSize</td>
@@ -189,10 +177,6 @@ ue1 === ue2; // true</pre>
 						<tr>
 						<td>content</td>
 						<td>是否需要抓取页面content，也就是区分是抓取操作，还是纯粹快照操作</td>
-						</tr>
-						<tr>
-						<td>cache</td>
-						<td>该job是否使用缓存</td>
 						</tr>
 						<tr>
 						<td>callback</td>
@@ -279,10 +263,6 @@ ue1 === ue2; // true</pre>
 						<tr>
 						<td>id</td>
 						<td>指定job的id</td>
-						</tr>
-						<tr>
-						<td>ignoreCache</td>
-						<td>是否忽略缓存，默认false</td>
 						</tr>
 						<tr>
 						<td>viewportSize</td>
@@ -372,10 +352,6 @@ ue1 === ue2; // true</pre>
 						<tr>
 						<td>id</td>
 						<td>指定job的id</td>
-						</tr>
-						<tr>
-						<td>ignoreCache</td>
-						<td>是否忽略缓存，默认false</td>
 						</tr>
 						<tr>
 						<td>image</td>
