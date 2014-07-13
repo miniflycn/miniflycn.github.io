@@ -1,0 +1,3 @@
+[submodule "lecture2014"]
+	path = lecture2014
+	url = https://github.com/miniflycn/lecture2014.git
